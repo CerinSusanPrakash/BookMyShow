@@ -5,7 +5,7 @@ const cors=require('cors')
 // app.use(cors());
 app.use(cors(
   {
-    origin: [""],
+    origin: ["https://book-my-show-frt.vercel.app"],
     methods: ["POST","GET","PUT","DELETE"],
     credentials: true
   }
