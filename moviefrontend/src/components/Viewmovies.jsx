@@ -18,7 +18,7 @@ const Viewmovies = () => {
   const [data,setdata]=useState([])
   const navigate=useNavigate()
   useEffect(()=>{
-    axios.get('http://localhost:5000/movie').then((res)=>{
+    axios.get('https://book-my-show-bkend.vercel.app/movie').then((res)=>{
       //console.log(res)
       setdata(res.data)
     }).catch((err)=>{
@@ -26,7 +26,7 @@ const Viewmovies = () => {
     })
   },[])
 function del_Value(e){
-axios.delete('http://localhost:5000/deletemovie/'+e).then((res)=>{
+axios.delete('https://book-my-show-bkend.vercel.app/'+e).then((res)=>{
   alert('Movie Deleted')
   window.location.reload();
 }).catch((err)=>{
