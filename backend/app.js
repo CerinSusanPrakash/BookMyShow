@@ -2,7 +2,14 @@ const express=require('express')
 const app=new express();
 require('./connection');
 const cors=require('cors')
-app.use(cors());
+// app.use(cors());
+app.use(cors(
+  {
+    origin: [""],
+    methods: ["POST","GET","PUT","DELETE"],
+    credentials: true
+  }
+));
 
 const movieModel=require('./models/MovieData')
 app.use(express.json());
