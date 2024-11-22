@@ -90,15 +90,27 @@ app.get("/", (req, res) => {
 //         res.status(500).json({ error: "Error adding movie", details: error.message });
 //     }
 // });
+
+// app.post('/addmovies', async (req, res) => {
+//   try {
+//     const item = req.body;
+//     const data_add = new movieModel(item);
+//     await data_add.save();
+//     res.status(201).send('Post successful');
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send('Server Error');
+//   }
+// });
+
+app.use(express.json());
 app.post('/addmovies', async (req, res) => {
   try {
-    const item = req.body;
-    const data_add = new movieModel(item);
-    await data_add.save();
-    res.status(201).send('Post successful');
+    const movie = new MovieModel(req.body); // Assuming a Mongoose model
+    await movie.save();
+    res.status(201).json({ message: 'Movie added successfully' });
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Error adding movie', error });
   }
 });
 
