@@ -16,25 +16,51 @@ const Addmovies = () => {
   function capValue(e){
     setForm({...form,[e.target.name]:e.target.value})
   }
-  function valueAdd(){
-    if (location.state!=null) {
-      // axios.put('https://book-my-show-bkend.vercel.app/editmovie/'+location.state.val._id,form).then((res)=>{
-      axios.put('https://book-my-show-bkend.vercel.app/?vercelToolbarCode=QBgC1bz4y7XcKb-/editmovie/'+location.state.val._id,form).then((res)=>{
-        alert('Movie Details Updated Sucessfully')
-      }).catch((err)=>{
-        console.log(err)
-      })
-    } else {
-      // axios.post('https://book-my-show-bkend.vercel.app/addmovies',form).then((res)=>{
-              // axios.post('https://book-my-show-bkend.vercel.app/addmovies',form).then((res)=>{
-      axios.post('https://book-my-show-bkend.vercel.app/?vercelToolbarCode=QBgC1bz4y7XcKb-/addmovies',form).then((res)=>{
-        alert('Data added')
-      }).catch((err)=>{
-        console.log(err)
-      })
-    }
+  // function valueAdd(){
+  //   if (location.state!=null) {
+  //     // axios.put('https://book-my-show-bkend.vercel.app/editmovie/'+location.state.val._id,form).then((res)=>{
+  //     axios.put('https://book-my-show-bkend.vercel.app/?vercelToolbarCode=QBgC1bz4y7XcKb-/editmovie/'+location.state.val._id,form).then((res)=>{
+  //       alert('Movie Details Updated Sucessfully')
+  //     }).catch((err)=>{
+  //       console.log(err)
+  //     })
+  //   } else {
+  //     // axios.post('https://book-my-show-bkend.vercel.app/addmovies',form).then((res)=>{
+  //             // axios.post('https://book-my-show-bkend.vercel.app/addmovies',form).then((res)=>{
+  //     axios.post('https://book-my-show-bkend.vercel.app/?vercelToolbarCode=QBgC1bz4y7XcKb-/addmovies',form).then((res)=>{
+  //       alert('Data added')
+  //     }).catch((err)=>{
+  //       console.log(err)
+  //     })
+  //   }
     
+  // }
+
+const valueAdd = () => {
+  if (location.state && location.state.val) {
+    // PUT request for editing
+    axios
+      .put(`https://book-my-show-bkend.vercel.app/editmovie/${location.state.val._id}`, form)
+      .then((res) => {
+        alert('Movie details updated successfully');
+      })
+      .catch((err) => {
+        console.error('Error updating movie:', err.response?.data || err.message);
+      });
+  } else {
+    // POST request for adding
+    axios
+      .post('https://book-my-show-bkend.vercel.app/addmovies', form)
+      .then((res) => {
+        alert('Data added successfully');
+      })
+      .catch((err) => {
+        console.error('Error adding movie:', err.response?.data || err.message);
+      });
   }
+};
+
+  
   useEffect(()=>{
     if (location.state!=null) {
       setForm({...form,movieName:location.state.val.movieName,
