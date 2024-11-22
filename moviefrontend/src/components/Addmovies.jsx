@@ -24,7 +24,7 @@ const Addmovies = () => {
         console.log(err)
       })
     } else {
-      axios.post('https://book-my-show-bkend.vercel.app/?vercelToolbarCode=XIA0YC1R2vITGTI/addmovies',form).then((res)=>{
+      axios.post('https://book-my-show-bkend.vercel.app/addmovies',form).then((res)=>{
               // axios.post('https://book-my-show-bkend.vercel.app/addmovies',form).then((res)=>{
         alert('Data added')
       }).catch((err)=>{
