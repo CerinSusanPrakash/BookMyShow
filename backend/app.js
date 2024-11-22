@@ -2,6 +2,7 @@ const express=require('express')
 const app=new express();
 require('./connection');
 const cors=require('cors')
+const movieModel=require('./models/MovieData')
 // app.use(cors());
 app.use(cors(
   {
@@ -10,8 +11,6 @@ app.use(cors(
     credentials: true
   }
 ));
-
-const movieModel=require('./models/MovieData')
 app.use(express.json());
 
 app.get('/',(req,res)=>{
