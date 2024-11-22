@@ -7,7 +7,7 @@ const movieModel=require('./models/MovieData')
 app.use(cors(
   {
     origin: ["https://book-my-show-frt.vercel.app"],
-    methods: ["POST", "GET"],
+    // methods: ["POST", "GET"],
     credentials: true
   }
 ));
