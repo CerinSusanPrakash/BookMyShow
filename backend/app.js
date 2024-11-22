@@ -80,16 +80,28 @@ app.get("/", (req, res) => {
 });
 
 // Add Movie
-app.post("/addmovies", async (req, res) => {
-    try {
-        const item = req.body;
-        const data_add = new movieModel(item);
-        const data = await data_add.save();
-        res.status(201).json({ message: "Movie added successfully", data });
-    } catch (error) {
-        res.status(500).json({ error: "Error adding movie", details: error.message });
-    }
+// app.post("/addmovies", async (req, res) => {
+//     try {
+//         const item = req.body;
+//         const data_add = new movieModel(item);
+//         const data = await data_add.save();
+//         res.status(201).json({ message: "Movie added successfully", data });
+//     } catch (error) {
+//         res.status(500).json({ error: "Error adding movie", details: error.message });
+//     }
+// });
+app.post('/addmovies', async (req, res) => {
+  try {
+    const item = req.body;
+    const data_add = new movieModel(item);
+    await data_add.save();
+    res.status(201).send('Post successful');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
 });
+
 
 // Get All Movies
 app.get("/movie", async (req, res) => {
@@ -102,14 +114,26 @@ app.get("/movie", async (req, res) => {
 });
 
 // Edit Movie
-app.put("/editmovie/:id", async (req, res) => {
-    try {
-        const data = await movieModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.status(200).json({ message: "Movie updated successfully", data });
-    } catch (error) {
-        res.status(500).json({ error: "Error updating movie", details: error.message });
-    }
+// app.put("/editmovie/:id", async (req, res) => {
+//     try {
+//         const data = await movieModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+//         res.status(200).json({ message: "Movie updated successfully", data });
+//     } catch (error) {
+//         res.status(500).json({ error: "Error updating movie", details: error.message });
+//     }
+// });
+
+app.put('/editmovie/:id', async (req, res) => {
+  try {
+    const data = await movieModel.findByIdAndUpdate(req.params.id, req.body);
+    if (!data) return res.status(404).send('Movie not found');
+    res.send('Updated Successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server Error');
+  }
 });
+
 
 // Delete Movie
 app.delete("/deletemovie/:id", async (req, res) => {
