@@ -26,7 +26,7 @@ const Viewmovies = () => {
     })
   },[])
 function del_Value(e){
-axios.delete('https://book-my-show-bkend.vercel.app/'+e).then((res)=>{
+axios.delete('https://book-my-show-bkend.vercel.app/deletemovie/'+e).then((res)=>{
   alert('Movie Deleted')
   window.location.reload();
 }).catch((err)=>{
