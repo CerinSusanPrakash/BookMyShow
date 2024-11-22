@@ -14,6 +14,10 @@ app.use(cors(
 const movieModel=require('./models/MovieData')
 app.use(express.json());
 
+app.get('/',(req,res)=>{
+  res.json("Backend working");
+})
+
 app.post('/addmovies',async(req,res)=>{
     try {
         var item=req.body;
