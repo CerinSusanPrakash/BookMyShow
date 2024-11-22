@@ -104,15 +104,32 @@ app.get("/", (req, res) => {
 // });
 
 app.use(express.json());
+// app.post('/addmovies', async (req, res) => {
+//   try {
+//     const movie = new MovieModel(req.body); // Assuming a Mongoose model
+//     await movie.save();
+//     res.status(201).json({ message: 'Movie added successfully' });
+//   } catch (error) {
+//     res.status(500).json({ message: 'Error adding movie', error });
+//   }
+// });
 app.post('/addmovies', async (req, res) => {
   try {
-    const movie = new MovieModel(req.body); // Assuming a Mongoose model
+    if (!req.body.movieName || !req.body.movieDirector) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+
+    // Assuming Mongoose model for movies
+    const movie = new MovieModel(req.body);
     await movie.save();
+
     res.status(201).json({ message: 'Movie added successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Error adding movie', error });
+    console.error('Error adding movie:', error.message || error);
+    res.status(500).json({ message: 'Internal server error', error });
   }
 });
+
 
 
 // Get All Movies
