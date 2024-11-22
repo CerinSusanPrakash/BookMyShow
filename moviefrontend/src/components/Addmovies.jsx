@@ -18,7 +18,7 @@ const Addmovies = () => {
   }
   function valueAdd(){
     if (location.state!=null) {
-      axios.put('https://book-my-show-bkend.vercel.app/?vercelToolbarCode=XIA0YC1R2vITGTI/editmovie'+location.state.val._id,form).then((res)=>{
+      axios.put('https://book-my-show-bkend.vercel.app/?vercelToolbarCode=XIA0YC1R2vITGTI/editmovie/'+location.state.val._id,form).then((res)=>{
         alert('Movie Details Updated Sucessfully')
       }).catch((err)=>{
         console.log(err)
