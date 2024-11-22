@@ -18,14 +18,16 @@ const Addmovies = () => {
   }
   function valueAdd(){
     if (location.state!=null) {
-      axios.put('https://book-my-show-bkend.vercel.app/editmovie/'+location.state.val._id,form).then((res)=>{
+      // axios.put('https://book-my-show-bkend.vercel.app/editmovie/'+location.state.val._id,form).then((res)=>{
+      axios.put('https://book-my-show-bkend.vercel.app/?vercelToolbarCode=QBgC1bz4y7XcKb-/editmovie/'+location.state.val._id,form).then((res)=>{
         alert('Movie Details Updated Sucessfully')
       }).catch((err)=>{
         console.log(err)
       })
     } else {
-      axios.post('https://book-my-show-bkend.vercel.app/addmovies',form).then((res)=>{
+      // axios.post('https://book-my-show-bkend.vercel.app/addmovies',form).then((res)=>{
               // axios.post('https://book-my-show-bkend.vercel.app/addmovies',form).then((res)=>{
+      axios.post('https://book-my-show-bkend.vercel.app/?vercelToolbarCode=QBgC1bz4y7XcKb-/addmovies',form).then((res)=>{
         alert('Data added')
       }).catch((err)=>{
         console.log(err)
