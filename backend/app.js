@@ -20,23 +20,43 @@ app.get("/", (req, res) => {
 });
 
 // Add Movie
-app.post("/addmovies", async (req, res) => {
-    try {
-        const { movieName, movieDirector } = req.body;
+// app.post("/addmovies", async (req, res) => {
+//     try {
+//         const { movieName, movieDirector } = req.body;
 
-        // Validate input
-        if (!movieName || !movieDirector) {
-            return res.status(400).json({ message: "Missing required fields" });
-        }
+//         // Validate input
+//         if (!movieName || !movieDirector) {
+//             return res.status(400).json({ message: "Missing required fields" });
+//         }
 
-        const movie = new movieModel(req.body); // Create new movie document
-        const savedMovie = await movie.save(); // Save to database
-        res.status(201).json({ message: "Movie added successfully", data: savedMovie });
-    } catch (error) {
-        console.error("Error adding movie:", error.message || error);
-        res.status(500).json({ message: "Internal server error", error: error.message });
+//         const movie = new movieModel(req.body); // Create new movie document
+//         const savedMovie = await movie.save(); // Save to database
+//         res.status(201).json({ message: "Movie added successfully", data: savedMovie });
+//     } catch (error) {
+//         console.error("Error adding movie:", error.message || error);
+//         res.status(500).json({ message: "Internal server error", error: error.message });
+//     }
+// });
+
+
+app.post('/addmovies', async (req, res) => {
+  try {
+    console.log("Received data:", req.body); // Log incoming data
+    if (!req.body.movieName || !req.body.movieDirector) {
+      console.log("Missing required fields");
+      return res.status(400).json({ message: 'Missing required fields' });
     }
+
+    const movie = new movieModel(req.body); // Save incoming data
+    const savedMovie = await movie.save();
+    console.log("Movie saved successfully:", savedMovie);
+    res.status(201).json({ message: 'Movie added successfully', data: savedMovie });
+  } catch (error) {
+    console.error("Error in /addmovies:", error.message || error);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
+  }
 });
+
 
 // Get All Movies
 app.get("/movie", async (req, res) => {
