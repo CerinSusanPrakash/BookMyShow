@@ -20,6 +20,16 @@ app.get("/", (req, res) => {
 });
 
 // Add Movie
+app.post('/addmovies',async(req,res)=>{
+    try {
+        var item=req.body;
+        const data_add=new movieModel(item);
+        const data=await data_add.save();
+        res.send('Post sucessful')
+    } catch (error) {
+        console.log(error)
+    }
+})
 // app.post("/addmovies", async (req, res) => {
 //     try {
 //         const { movieName, movieDirector } = req.body;
@@ -39,23 +49,23 @@ app.get("/", (req, res) => {
 // });
 
 
-app.post('/addmovies', async (req, res) => {
-  try {
-    console.log("Received data:", req.body); // Log incoming data
-    if (!req.body.movieName || !req.body.movieDirector) {
-      console.log("Missing required fields");
-      return res.status(400).json({ message: 'Missing required fields' });
-    }
+// app.post('/addmovies', async (req, res) => {
+//   try {
+//     console.log("Received data:", req.body); // Log incoming data
+//     if (!req.body.movieName || !req.body.movieDirector) {
+//       console.log("Missing required fields");
+//       return res.status(400).json({ message: 'Missing required fields' });
+//     }
 
-    const movie = new movieModel(req.body); // Save incoming data
-    const savedMovie = await movie.save();
-    console.log("Movie saved successfully:", savedMovie);
-    res.status(201).json({ message: 'Movie added successfully', data: savedMovie });
-  } catch (error) {
-    console.error("Error in /addmovies:", error.message || error);
-    res.status(500).json({ message: 'Internal server error', error: error.message });
-  }
-});
+//     const movie = new movieModel(req.body); // Save incoming data
+//     const savedMovie = await movie.save();
+//     console.log("Movie saved successfully:", savedMovie);
+//     res.status(201).json({ message: 'Movie added successfully', data: savedMovie });
+//   } catch (error) {
+//     console.error("Error in /addmovies:", error.message || error);
+//     res.status(500).json({ message: 'Internal server error', error: error.message });
+//   }
+// });
 
 
 // Get All Movies
