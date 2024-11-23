@@ -27,16 +27,32 @@ app.get("/", (req, res) => {
 });
 
 // Add Movie
-app.post('/addmovies',async(req,res)=>{
-    try {
-        var item=req.body;
-        const data_add=new movieModel(item);
-        const data=await data_add.save();
-        res.send('Post sucessful')
-    } catch (error) {
-        console.log(error)
-    }
-})
+app.post('/addmovies', async (req, res) => {
+  const startTime = Date.now(); // Start timer
+  try {
+    const movie = new movieModel(req.body);
+    await movie.save();
+    const endTime = Date.now(); // End timer
+    console.log(`Request processed in ${endTime - startTime}ms`);
+    res.status(201).json({ message: 'Movie added successfully' });
+  } catch (error) {
+    const endTime = Date.now(); // End timer
+    console.error(`Request failed after ${endTime - startTime}ms`);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
+  }
+});
+
+
+// app.post('/addmovies',async(req,res)=>{
+//     try {
+//         var item=req.body;
+//         const data_add=new movieModel(item);
+//         const data=await data_add.save();
+//         res.send('Post sucessful')
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
 // app.post("/addmovies", async (req, res) => {
 //     try {
 //         const { movieName, movieDirector } = req.body;
