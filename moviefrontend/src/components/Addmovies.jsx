@@ -26,7 +26,7 @@ const Addmovies = () => {
     } else {
         console.log("Form data being sent:", form);
 
-      axios.post('https://book-my-show-bkend.vercel.app/addmovies/',form).then((res)=>{
+      axios.post('https://book-my-show-bkend.vercel.app/addmovies',form).then((res)=>{
         alert('Data added')
       }).catch((err)=>{
         console.log(err)
