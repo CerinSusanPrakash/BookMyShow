@@ -72,6 +72,11 @@ app.use(cors({
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
 }));
+app.use(cors({
+    origin: ["https://book-my-show-frt.vercel.app"], // Replace with your frontend URL
+    methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true
+}));
 app.use(express.json()); // Parse incoming JSON requests
 
 // Default Route
