@@ -77,7 +77,7 @@ app.use(cors({
 //     methods: ["POST", "PUT"],
 //     credentials: true
 // }));
-app.use(express.json()); // Parse incoming JSON requests
+// app.use(express.json()); // Parse incoming JSON requests
 
 // Default Route
 app.get("/", (req, res) => {
