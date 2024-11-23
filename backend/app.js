@@ -3,19 +3,19 @@ const cors = require("cors");
 require("./connection"); // Ensure this file connects to the database correctly
 const movieModel = require("./models/MovieData");
 
-const app = express();
-const appb = express();
-appb.use(express.json());
-app.use(cors({
-    origin: ["https://book-my-show-frt.vercel.app/add"], // Add all allowed origins
-    methods: ["GET", "DELETE", "POST", "PUT"],
-    credentials: true,
-}));
-const PORT = process.env.PORT || 5000; // Use environment variable for the port
+// const app = express();
+// const appb = express();
+// appb.use(express.json());
+// app.use(cors({
+//     origin: ["https://book-my-show-frt.vercel.app/add"], // Add all allowed origins
+//     methods: ["GET", "DELETE", "POST", "PUT"],
+//     credentials: true,
+// }));
+// const PORT = process.env.PORT || 5000; // Use environment variable for the port
 
 // Middleware
 app.use(cors({
-    origin: ["https://book-my-show-frt.vercel.app", "https://book-my-show-frt.vercel.app/add"], // Add all allowed origins
+    origin: ["https://book-my-show-frt.vercel.app/add"], // Add all allowed origins
     methods: ["GET", "DELETE", "POST", "PUT"],
     credentials: true,
 }));
