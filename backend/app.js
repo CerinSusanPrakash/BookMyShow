@@ -73,7 +73,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(cors({
-    origin: ["https://book-my-show-frt.vercel.app"], // Replace with your frontend URL
+    origin: ["https://book-my-show-frt.vercel.app/add"], // Replace with your frontend URL
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
 }));
