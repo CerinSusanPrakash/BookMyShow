@@ -68,7 +68,7 @@ const PORT = process.env.PORT || 5000; // Use environment variable for port
 
 // Middleware
 app.use(cors({
-    origin: ["https://book-my-show-frt.vercel.app","https://book-my-show-frt.vercel.app/add"], // Replace with your frontend URL
+    origin: ["https://book-my-show-frt.vercel.app","https://book-my-show-frt.vercel.app/addmovies"], // Replace with your frontend URL
     methods: ["GET", "DELETE","POST", "PUT"],
     credentials: true
 }));
