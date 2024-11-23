@@ -3,7 +3,7 @@ const cors = require("cors");
 require("./connection"); // Ensure this file connects to the database correctly
 const movieModel = require("./models/MovieData");
 
-// const app = express();
+const app = express();
 // const appb = express();
 // appb.use(express.json());
 // app.use(cors({
