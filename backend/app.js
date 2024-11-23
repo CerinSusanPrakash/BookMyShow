@@ -15,7 +15,7 @@ const movieModel = require("./models/MovieData");
 
 // Middleware
 app.use(cors({
-    origin: ["https://book-my-show-frt.vercel.app/add"], // Add all allowed origins
+    origin: ["https://book-my-show-frt.vercel.app/add","https://book-my-show-frt.vercel.app"], // Add all allowed origins
     methods: ["GET", "DELETE", "POST", "PUT"],
     credentials: true,
 }));
