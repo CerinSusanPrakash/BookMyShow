@@ -11,7 +11,7 @@ const app = express();
 //     methods: ["GET", "DELETE", "POST", "PUT"],
 //     credentials: true,
 // }));
-// const PORT = process.env.PORT || 5000; // Use environment variable for the port
+const PORT = process.env.PORT || 5000; // Use environment variable for the port
 
 // Middleware
 app.use(cors({
