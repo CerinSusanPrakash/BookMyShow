@@ -68,15 +68,15 @@ const PORT = process.env.PORT || 5000; // Use environment variable for port
 
 // Middleware
 app.use(cors({
-    origin: ["https://book-my-show-frt.vercel.app"], // Replace with your frontend URL
-    methods: ["GET", "DELETE"],
+    origin: ["https://book-my-show-frt.vercel.app","https://book-my-show-frt.vercel.app/add"], // Replace with your frontend URL
+    methods: ["GET", "DELETE","POST", "PUT"],
     credentials: true
 }));
-app.use(cors({
-    origin: ["https://book-my-show-frt.vercel.app/add"], // Replace with your frontend URL
-    methods: ["POST", "PUT"],
-    credentials: true
-}));
+// app.use(cors({
+//     origin: ["https://book-my-show-frt.vercel.app/add"], // Replace with your frontend URL
+//     methods: ["POST", "PUT"],
+//     credentials: true
+// }));
 app.use(express.json()); // Parse incoming JSON requests
 
 // Default Route
