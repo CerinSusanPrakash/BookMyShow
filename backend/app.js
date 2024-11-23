@@ -1,63 +1,3 @@
-// const express=require('express')
-// const app=new express();
-// require('./connection');
-// const cors=require('cors')
-// const movieModel=require('./models/MovieData')
-// // app.use(cors());
-// app.use(cors(
-//   {
-//     origin: ["https://book-my-show-frt.vercel.app"],
-//     methods: ["POST", "GET"],
-//     credentials: true
-//   }
-// ));
-// app.use(express.json());
-
-// app.get('/',(req,res)=>{
-//   res.json("Backend working");
-// })
-
-// app.post('/addmovies',async(req,res)=>{
-//     try {
-//         var item=req.body;
-//         const data_add=new movieModel(item);
-//         const data=await data_add.save();
-//         res.send('Post sucessful')
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
-// app.get('/movie',async(req,res)=>{
-//     try {
-//         const data=await movieModel.find();
-//         res.send(data);
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
-// app.put('/editmovie/:id',async(req,res)=>{
-//     try {
-//         const data=await movieModel.findByIdAndUpdate(req.params.id,req.body)
-//         res.send('Updated Sucessfully')
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
-// app.delete('/deletemovie/:id',async(req,res)=>{
-//     try {
-//         const data=await movieModel.findByIdAndDelete(req.params.id)
-//         res.send('Deleted sucessfully')
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
-
-
-// app.listen(5000,()=>{
-//     console.log('Server is running on PORT 5000')
-// })
-
-
 const express = require("express");
 const cors = require("cors");
 require("./connection");
@@ -118,33 +58,33 @@ app.use(express.json());
 //     res.status(500).json({ message: 'Error adding movie', error });
 //   }
 // });
-// app.post('/addmovies', async (req, res) => {
-//   try {
-//     if (!req.body.movieName || !req.body.movieDirector) {
-//       return res.status(400).json({ message: 'Missing required fields' });
-//     }
-
-//     // Assuming Mongoose model for movies
-//     const movie = new MovieModel(req.body);
-//     await movie.save();
-
-//     res.status(201).json({ message: 'Movie added successfully' });
-//   } catch (error) {
-//     console.error('Error adding movie:', error.message || error);
-//     res.status(500).json({ message: 'Internal server error', error });
-//   }
-// });
-
-app.post('/addmovies',async(req,res)=>{
-    try {
-        var item=req.body;
-        const data_add=new movieModel(item);
-        const data=await data_add.save();
-        res.send('Post sucessful')
-    } catch (error) {
-        console.log(error)
+app.post('/addmovies', async (req, res) => {
+  try {
+    if (!req.body.movieName || !req.body.movieDirector) {
+      return res.status(400).json({ message: 'Missing required fields' });
     }
-})
+
+    // Assuming Mongoose model for movies
+    const movie = new MovieModel(req.body);
+    await movie.save();
+
+    res.status(201).json({ message: 'Movie added successfully' });
+  } catch (error) {
+    console.error('Error adding movie:', error.message || error);
+    res.status(500).json({ message: 'Internal server error', error });
+  }
+});
+
+// app.post('/addmovies',async(req,res)=>{
+//     try {
+//         var item=req.body;
+//         const data_add=new movieModel(item);
+//         const data=await data_add.save();
+//         res.send('Post sucessful')
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
 
 
 
